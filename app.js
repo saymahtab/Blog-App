@@ -1,14 +1,16 @@
 const express = require('express');
+const { default: mongoose} = require('mongoose')
+const methodOverride = require('method-override')
 
 const { blogRouter } = require('./routes/blog.route');
 const { healthRouter } = require('./routes/health');
-const { default: mongoose} = require('mongoose')
 const { MONGO_URI } = require('./env');
 
 const app = express();
 const port = 3000;
 
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}));
 app.use(express.static('public'))

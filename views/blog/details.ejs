@@ -1,0 +1,14 @@
+<%- include ('../layouts/main', {title: blog.title, body: ''}) %>
+
+<h2>
+    <%= blog.title %>
+</h2>
+<p>
+    <%= blog.body  %>
+</p>
+
+<a href="/blog/<%= blog._id %>">Edit</a>
+
+<form action="/blog/<%= blog._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+</form>
