@@ -32,9 +32,18 @@ const readallBlogs = async (req, res) => {
     const client = new MongoClient(MONGO_URI) 
     try {
         const blogDb = client.db(BLOG_DB); 
-        const blogs = blogDb.collection(BLOG_COL); 
-        const cursor = blogs.find({})
+        const blogs = blogDb.collection(BLOG_COL);
+
+        const cursor = blogs.find({})        //first method
         const result = await cursor.toArray();
+
+        // let docs = [];                  // second method
+        // for await (const doc of cursor) {
+        //     docs.push(doc)
+        // }
+        // while(await cursor.hasNext()) {           // third method
+        //     docs.push(cursor.next());
+        // }
 
         res.status(201).json(result).send();
 

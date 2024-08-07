@@ -1,0 +1,11 @@
+<h2>All Blogs</h2>
+<% blogs.forEach(blog => { %>
+    <article>
+        <h3><a href="/blog/<%= blog.id %>">
+            <%= blog.title %>
+        </a></h3>
+        <p>
+            <%= blog.body.substring(0, 100) %>
+        </p>
+    </article>
+<%  });  %>
